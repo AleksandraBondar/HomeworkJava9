@@ -1,38 +1,52 @@
-package ru.netology.smartHome;
+package ru.netology.javaqa62;
 
 public class Radio {
+    private int minStation = 0;
+    private int maxStation = 9;
     public int currentRadioStation;
+
+    public Radio() {
+        this.minStation = minStation;
+        this.maxStation = maxStation;
+    }
+
+    public Radio(int quantitySt) {
+        this.maxStation = quantitySt - 1;
+        this.currentRadioStation = maxStation;
+    }
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
     public void nextRadioStation() {
-        if (currentRadioStation < 9) {
+        if (currentRadioStation < maxStation) {
             currentRadioStation = currentRadioStation + 1;
         } else {
-            currentRadioStation = 0;
+            currentRadioStation = minStation;
         }
     }
 
     public void prevRadioStation() {
-        if (currentRadioStation > 0) {
+        if (currentRadioStation > minStation) {
             currentRadioStation = currentRadioStation - 1;
         } else {
-            currentRadioStation = 9;
+            currentRadioStation = maxStation;
         }
     }
 
     public void setRadioStation(int newRadioStation) {
-        if (newRadioStation > 9) {
+        if (newRadioStation > maxStation) {
             return;
         }
-        if (newRadioStation < 0) {
+        if (newRadioStation < minStation) {
             return;
         }
         currentRadioStation = newRadioStation;
     }
 
+    private int maxVolume = 100;
+    private int minVolume = 0;
     public int currentVolume;
 
     public int getCurrentVolume() {
@@ -40,18 +54,18 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (currentVolume < 100) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         } else {
-            currentVolume = 100;
+            currentVolume = maxVolume;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         } else {
-            currentVolume = 0;
+            currentVolume = minVolume;
         }
     }
 }
