@@ -1,9 +1,12 @@
-package ru.netology.javaqa62;
+package ru.netology.smartHome;
 
 public class Radio {
     private int minStation = 0;
     private int maxStation = 9;
-    public int currentRadioStation;
+    private int currentRadioStation;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int currentVolume;
 
     public Radio() {
         this.minStation = minStation;
@@ -17,6 +20,30 @@ public class Radio {
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
+    }
+
+    public void setRadioStation(int newRadioStation) {
+        if (newRadioStation > maxStation) {
+            return;
+        }
+        if (newRadioStation < minStation) {
+            return;
+        }
+        currentRadioStation = newRadioStation;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(int volume) {
+        if (volume > maxVolume) {
+            currentVolume = maxVolume;
+        }
+        if (volume < minVolume) {
+            currentVolume = minVolume;
+        }
+        currentVolume = volume;
     }
 
     public void nextRadioStation() {
@@ -33,24 +60,6 @@ public class Radio {
         } else {
             currentRadioStation = maxStation;
         }
-    }
-
-    public void setRadioStation(int newRadioStation) {
-        if (newRadioStation > maxStation) {
-            return;
-        }
-        if (newRadioStation < minStation) {
-            return;
-        }
-        currentRadioStation = newRadioStation;
-    }
-
-    private int maxVolume = 100;
-    private int minVolume = 0;
-    public int currentVolume;
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     public void increaseVolume() {
